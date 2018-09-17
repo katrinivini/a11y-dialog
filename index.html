@@ -1,0 +1,644 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Introduction · a11y-dialog</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="author" content="Hugo Giraudel">
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="./" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./#introduction">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="./">
+            
+                <a href="./#installation">
+            
+                    
+                    Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="./">
+            
+                <a href="./#usage">
+            
+                    
+                    Usage
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="./">
+            
+                <a href="./#expected-dom-structure">
+            
+                    
+                    Expected DOM structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="./">
+            
+                <a href="./#styling-layer">
+            
+                    
+                    Styling layer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="./">
+            
+                <a href="./#javascript-instantiation">
+            
+                    
+                    JavaScript instantiation
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="./">
+            
+                <a href="./#dom-api">
+            
+                    
+                    DOM API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="./">
+            
+                <a href="./#js-api">
+            
+                    
+                    JS API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="./">
+            
+                <a href="./#events">
+            
+                    
+                    Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="./">
+            
+                <a href="./#nested-dialogs">
+            
+                    
+                    Nested dialogs
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="./">
+            
+                <a href="./#implementations">
+            
+                    
+                    Implementations
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" >
+            
+                <a target="_blank" href="http://edenspiekermann.github.io/a11y-dialog/example/">
+            
+                    
+                    Example ↗
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" >
+            
+                <a target="_blank" href="https://github.com/edenspiekermann/a11y-dialog">
+            
+                    
+                    GitHub repository ↗
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Introduction</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="a11y-dialog"><a href="http://edenspiekermann.github.io/a11y-dialog/" target="_blank">A11y Dialog</a></h1>
+<p><a href="http://edenspiekermann.github.io/a11y-dialog/" target="_blank">a11y-dialog</a> is a lightweight (1.3Kb) yet flexible script to create accessible dialog windows.</p>
+<p>&#x2714;&#xFE0E; No dependencies<br>&#x2714;&#xFE0E; Leveraging the native <code>&lt;dialog&gt;</code> element<br>&#x2714;&#xFE0E; Closing dialog on overlay click and <kbd>ESC</kbd><br>&#x2714;&#xFE0E; Toggling <code>aria-*</code> attributes<br>&#x2714;&#xFE0E; Trapping and restoring focus<br>&#x2714;&#xFE0E; Firing events<br>&#x2714;&#xFE0E; DOM and JS APIs<br>&#x2714;&#xFE0E; Fast and tiny  </p>
+<p>You can try the <a href="http://edenspiekermann.github.io/a11y-dialog/example/" target="_blank">live demo &#x2197;</a>.</p>
+<h2 id="installation">Installation</h2>
+<pre><code>npm install a11y-dialog --save
+</code></pre><h2 id="usage">Usage</h2>
+<p>You will find a concrete demo in the <a href="https://github.com/edenspiekermann/a11y-dialog/tree/master/example" target="_blank">example</a> folder of this repository, but basically here is the gist:</p>
+<h3 id="expected-dom-structure">Expected DOM structure</h3>
+<p>Here is the basic markup, which can be enhanced. Pay extra attention to the comments.</p>
+<pre><code class="lang-html"><span class="hljs-comment">&lt;!--
+  Main container related notes:
+  - It can have a different id than `main`, however you will have to pass it as a second argument to the A11yDialog instance. See further down.
+--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;main&quot;</span>&gt;</span>
+  <span class="hljs-comment">&lt;!--
+    Here lives the main content of the page.
+  --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--
+  Dialog container related notes:
+  - It is not the actual dialog window, just the container with which the script interacts.
+  - It can have a different id than `my-accessible-dialog`, but it needs an `id`
+  anyway.
+--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;my-accessible-dialog&quot;</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!--
+    Overlay related notes:
+    - It has to have the `tabindex=&quot;-1&quot;` attribute.
+    - It doesn&#x2019;t have to have the `data-a11y-dialog-hide` attribute, however this is recommended. It hides the dialog when clicking outside of it.
+  --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;-1&quot;</span> <span class="hljs-attr">data-a11y-dialog-hide</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!--
+    Dialog window content related notes:
+    - It is the actual visual dialog element.
+    - It may have the `alertdialog` role to make it behave like a &#x201C;modal&#x201D;. See the &#x201C;Usage as a modal&#x201D; section of the docs.
+    - It doesn&#x2019;t have to be a `&lt;dialog&gt;` element, it can be a `&lt;div&gt;` element with the `dialog` or `alertdialog` role (e.g. `&lt;div role=&quot;dialog&quot;&gt;`).
+    - It doesn&#x2019;t have to have the `aria-labelledby` attribute however this is recommended. It should match the `id` of the dialog title.
+  --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">dialog</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">&quot;dialog-title&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--
+      Closing button related notes:
+      - It does have to have the `type=&quot;button&quot;` attribute.
+      - It does have to have the `data-a11y-dialog-hide` attribute.
+      - It does have to have an aria-label attribute if you use an icon as content.
+    --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">data-a11y-dialog-hide</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Close this dialog window&quot;</span>&gt;</span>
+      &amp;times;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!--
+      Dialog title related notes:
+      - It should have a different content than `Dialog Title`.
+      - It can have a different id than `dialog-title`.
+    --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;dialog-title&quot;</span>&gt;</span>Dialog Title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!--
+      Here lives the main content of the dialog.
+    --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">dialog</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h3 id="styling-layer">Styling layer</h3>
+<p>The script itself does not take care of any styling whatsoever, not even the <code>display</code> property. It basically mostly toggles the <code>aria-hidden</code> attribute on the dialog itself and its counterpart containers.</p>
+<p>In browsers supporting the <code>&lt;dialog&gt;</code> element, its visibility will be handled by the user-agent itself. Until support gets better across the board, the styling layer is up to the implementor (you).</p>
+<p>We recommend using at least the following styles to make everything work on both supporting and non-supporting user-agents:</p>
+<pre><code class="lang-css"><span class="hljs-comment">/**
+ * When the native `&lt;dialog&gt;` element is supported, the overlay is implied and
+ * can be styled with `::backdrop`, which means the DOM one should be removed.
+ *
+ * The `data-a11y-dialog-native` attribute is set by the script when the
+ * `&lt;dialog&gt;` element is properly supported.
+ *
+ * Feel free to replace `:first-child` with the overlay selector you prefer.
+ */</span>
+<span class="hljs-selector-attr">[data-a11y-dialog-native]</span> &gt; <span class="hljs-selector-pseudo">:first-child</span> {
+  <span class="hljs-attribute">display</span>: none;
+}
+
+<span class="hljs-comment">/**
+ * When the `&lt;dialog&gt;` element is not supported, its default display is `inline`
+ * which can cause layout issues. This makes sure the dialog is correctly
+ * displayed when open.
+ */</span>
+<span class="hljs-selector-tag">dialog</span><span class="hljs-selector-attr">[open]</span> {
+  <span class="hljs-attribute">display</span>: block;
+}
+
+<span class="hljs-comment">/**
+ * When the native `&lt;dialog&gt;` element is not supported, the script toggles the
+ * `aria-hidden` attribute on the container. If `aria-hidden` is set to `true`,
+ * the container should be hidden entirely.
+ *
+ * Feel free to replace `.dialog-container` with the container selector you
+ * prefer.
+ */</span>
+<span class="hljs-selector-class">.dialog-container</span><span class="hljs-selector-attr">[aria-hidden=&apos;true&apos;]</span> {
+  <span class="hljs-attribute">display</span>: none;
+}
+</code></pre>
+<h3 id="javascript-instantiation">JavaScript instantiation</h3>
+<pre><code class="lang-javascript"><span class="hljs-comment">// Get the dialog element (with the accessor method you want)</span>
+<span class="hljs-keyword">const</span> el = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;my-accessible-dialog&apos;</span>);
+
+<span class="hljs-comment">// Instantiate a new A11yDialog module</span>
+<span class="hljs-keyword">const</span> dialog = <span class="hljs-keyword">new</span> A11yDialog(el);
+</code></pre>
+<p>As recommended in the <a href="#expected-dom-structure">HTML section</a> of this documentation, the dialog element is supposed to be on the same level as your content container(s). Therefore, the script will toggle the <code>aria-hidden</code> attribute of the siblings of the dialog element as a default. You can change this behaviour by passing a <code>NodeList</code>, an <code>Element</code> or a selector as second argument to the <code>A11yDialog</code> constructor:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> dialog = <span class="hljs-keyword">new</span> A11yDialog(el, containers);
+</code></pre>
+<h3 id="usage-as-a-modal">Usage as a &#x201C;modal&#x201D;</h3>
+<p>By default, a11y-dialog behaves as a dialog: it is closable with the <kbd>ESC</kbd> key, and by clicking the backdrop. However, it is possible to make it work like a &#x201C;modal&#x201D;, which would remove these features.</p>
+<p>To do so:</p>
+<ol>
+<li>Add <code>role=&quot;alertdialog&quot;</code> to the <code>&lt;dialog&gt;</code> element or replace<code>role=&quot;dialog&quot;</code> with <code>role=&quot;alertdialog&quot;</code> in case you don&#x2019;t use the <code>&lt;dialog&gt;</code> element. This will make sure <kbd>ESC</kbd> doesn&#x2019;t close the modal.</li>
+<li>Remove <code>data-a11y-dialog-hide</code> from the overlay element. This makes sure it is not possible to close the modal by clicking outside of it.</li>
+<li>In case the user actively needs to operate with the modal, you might consider removing the close button from it. Be sure to still offer a way to eventually close the modal.</li>
+</ol>
+<p>For more information about modals, refer to the <a href="https://www.w3.org/TR/wai-aria-1.1/#alertdialog" target="_blank">WAI ARIA recommendations</a>.</p>
+<h2 id="dom-api">DOM API</h2>
+<p>The DOM API relies on <code>data-*</code> attributes. They all live under the <code>data-a11y-dialog-*</code> namespace for consistency, clarity and robustness. Two attributes are recognised:</p>
+<ul>
+<li><code>data-a11y-dialog-show</code>: the <code>id</code> of the dialog element is expected as a value</li>
+<li><code>data-a11y-dialog-hide</code>: the <code>id</code> of the dialog element is expected as a value; if omitted, the closest parent dialog element (if any) will be the target</li>
+</ul>
+<p>The following button will open the dialog with the <code>my-accessible-dialog</code> id when interacted with.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">data-a11y-dialog-show</span>=<span class="hljs-string">&quot;my-accessible-dialog&quot;</span>&gt;</span>Open the dialog<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<p>The following button will close the dialog in which it lives when interacted with.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">data-a11y-dialog-hide</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Close the dialog&quot;</span>&gt;</span>&amp;times;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<p>The following button will close the dialog with the <code>my-accessible-dialog</code> id when interacted with. Given that the only focusable elements when the dialog is open are the focusable children of the dialog itself, it seems rather unlikely that you will ever need this but in case you do, well you can.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">data-a11y-dialog-hide</span>=<span class="hljs-string">&quot;my-accessible-dialog&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Close the dialog&quot;</span>&gt;</span>&amp;times;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<p>In addition, the library adds a <code>data-a11y-dialog-native</code> attribute (with no value) when the <code>&lt;dialog&gt;</code> element is natively supported. This attribute is essentially used to customise the styling layer based on user-agent support (or lack thereof).</p>
+<h2 id="js-api">JS API</h2>
+<p>Regarding the JS API, it simply consists on <code>show()</code> and <code>hide()</code> methods on the dialog instance.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// Show the dialog</span>
+dialog.show();
+
+<span class="hljs-comment">// Hide the dialog</span>
+dialog.hide();
+</code></pre>
+<p>When the <code>&lt;dialog&gt;</code> element is natively supported, the argument passed to <code>show()</code> and <code>hide()</code> is being passed to the native call to <a href="https://www.w3.org/TR/html52/interactive-elements.html#dom-htmldialogelement-showmodal" target="_blank"><code>showModal()</code></a> and <a href="https://www.w3.org/TR/html52/interactive-elements.html#dom-htmldialogelement-close" target="_blank"><code>close()</code></a>. If necessary, the <code>returnValue</code> can be read using <code>dialog.dialog.returnValue</code>.</p>
+<p>For advanced usages, there are <code>create()</code> and <code>destroy()</code> methods. These are responsible for attaching click event listeners to dialog openers and closers. Note that the <code>create()</code> method is <strong>automatically called on instantiation</strong> so there is no need to call it again directly.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// Unbind click listeners from dialog openers and closers and remove all bound</span>
+<span class="hljs-comment">// custom event listeners registered with `.on()`</span>
+dialog.destroy();
+
+<span class="hljs-comment">// Bind click listeners to dialog openers and closers</span>
+dialog.create();
+</code></pre>
+<p>If necessary, the <code>create()</code> method also accepts the <code>targets</code> containers (the one toggled along with the dialog element) in the same form as the second argument from the constructor. If omitted, the one given to the constructor (or default) will be used.</p>
+<h2 id="events">Events</h2>
+<p>When shown, hidden and destroyed, the instance will emit certain events. It is possible to subscribe to these with the <code>on()</code> method which will receive the dialog DOM element and the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" target="_blank">event object</a> (if any).</p>
+<p>The event object can be used to know which trigger (opener / closer) has been used in case of a <code>show</code> or <code>hide</code> event.</p>
+<pre><code class="lang-javascript">dialog.on(<span class="hljs-string">&apos;show&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">dialogEl, event</span>) </span>{
+  <span class="hljs-comment">// Do something when dialog gets shown</span>
+  <span class="hljs-comment">// Note: opener is `event.currentTarget`</span>
+});
+
+dialog.on(<span class="hljs-string">&apos;hide&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">dialogEl, event</span>) </span>{
+  <span class="hljs-comment">// Do something when dialog gets hidden</span>
+  <span class="hljs-comment">// Note: closer is `event.currentTarget`</span>
+});
+
+dialog.on(<span class="hljs-string">&apos;destroy&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">dialogEl</span>) </span>{
+  <span class="hljs-comment">// Do something when dialog gets destroyed</span>
+});
+
+dialog.on(<span class="hljs-string">&apos;create&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">dialogEl</span>) </span>{
+  <span class="hljs-comment">// Do something when dialog gets created</span>
+  <span class="hljs-comment">// Note: because the initial `create()` call is made from the constructor, it</span>
+  <span class="hljs-comment">// is not possible to react to this particular one (as registering will be</span>
+  <span class="hljs-comment">// done after instantiation)</span>
+});
+</code></pre>
+<p>You can unregister these handlers with the <code>off()</code> method.</p>
+<pre><code class="lang-javascript">dialog.on(<span class="hljs-string">&apos;show&apos;</span>, doSomething);
+<span class="hljs-comment">// &#x2026;</span>
+dialog.off(<span class="hljs-string">&apos;show&apos;</span>, doSomething);
+</code></pre>
+<h2 id="nested-dialogs">Nested dialogs</h2>
+<p>Nested dialogs is a <a href="https://ux.stackexchange.com/questions/52042/is-it-acceptable-to-open-a-modal-popup-on-top-of-another-modal-popup" target="_blank">questionable design pattern</a> that is not referenced anywhere in the <a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element" target="_blank">HTML 5.2 Dialog specification</a>. Therefore it is discouraged and not supported by default by the library. That being said, if you still want to run with it, <a href="https://github.com/edenspiekermann/a11y-dialog/issues/80#issuecomment-377691629" target="_blank">Renato de Le&#xE3;o explains how in edenspiekermann/a11y-dialog#80</a>.</p>
+<h2 id="implementations">Implementations</h2>
+<p>If you happen to work with <a href="https://github.com/facebook/react/" target="_blank">React</a> or <a href="https://github.com/vuejs/vue" target="_blank">Vue</a> in your project, you&#x2019;re lucky! There are already great light-weight wrapper implemented for a11y-dialog:</p>
+<ul>
+<li><a href="https://github.com/HugoGiraudel/react-a11y-dialog" target="_blank">React A11yDialog</a></li>
+<li><a href="https://github.com/morkro/vue-a11y-dialog" target="_blank">Vue A11yDialog</a></li>
+</ul>
+<h2 id="disclaimer--credits">Disclaimer &amp; credits</h2>
+<p>Originally, this repository was a fork from <a href="https://github.com/gdkraus/accessible-modal-dialog" target="_blank">accessible-modal-dialog &#x2197;</a> by Greg Kraus. It has gone through various stages since the initial implementation and both packages are no longer similar in the way they work.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="./#installation" class="navigation navigation-next navigation-unique" aria-label="Next page: Installation">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Installation","level":"2.1","depth":1,"anchor":"#installation","path":"README.md","ref":"README.md#installation","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Hugo Giraudel","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"a11y-dialog","language":"en","gitbook":"*"},"file":{"path":"README.md","mtime":"2018-09-17T08:55:09.819Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-09-17T11:26:05.220Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
