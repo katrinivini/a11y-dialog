@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
 <html lang="en">
   <head>
       <meta charset="utf-8">
@@ -27,21 +27,11 @@
       </footer>
     </div>
 
-    <div class="dialog" id="my-accessible-dialog">
-      <div class="dialog-overlay" tabindex="-1" data-a11y-dialog-hide></div>
-      <dialog class="dialog-content" aria-labelledby="dialogTitle" aria-describedby="dialogDescription">
-        <button data-a11y-dialog-hide class="dialog-close" aria-label="Close this dialog window">&times;</button>
-
-        <h1 id="dialogTitle">Subscribe to ESPI Newsletter</h1>
-
-        <p id="dialogDescription">Fill in the ridiculously small form below to receive our ridiculously cool newsletter!</p>
-
-        <form action="http://edenspiekermann.us10.list-manage.com/subscribe/post?u=927d6a7cf437da88aac7a87ec&amp;id=6823ab7bb8" method="post" target="_blank">
-          <label for="email">Email (required)</label>
-          <input type="email" name="EMAIL" id="email" placeholder="john.doe@gmail.com" required>
-          <button type="submit" name="button">Sign up</button>
-        </form>
-      </dialog>
+    <div class="dialog" id="my-accessible-dialog" tabindex="-1" aria-label="Hi again Katrina">
+      <!-- <div class="dialog-overlay" tabindex="-1" data-a11y-dialog-hide></div> -->
+      <iframe id="iframe" src="http://katrinamvelez.mtv.corp.google.com:8000/example/iframe.html" class="dialog-content" aria-labelledby="dialogTitle" aria-describedby="dialogDescription">
+        
+      </iframe>
     </div>
 
     <script src="main.js"></script>
@@ -51,16 +41,6 @@
         var dialogEl = document.getElementById('my-accessible-dialog');
         var mainEl = document.getElementById('main');
         var dialog = new window.A11yDialog(dialogEl, mainEl);
-
-        dialog.on('show', function (dialogEl, triggerEl) {
-          console.log(dialogEl);
-          console.log(triggerEl);
-        });
-
-        // To manually control the dialog:
-        // dialog.show()
-        // dialog.hide()
-        // dialog.destroy()
       });
     }());
     </script>

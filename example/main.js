@@ -10,7 +10,8 @@
     'select:not([disabled]):not([inert])',
     'textarea:not([disabled]):not([inert])',
     'button:not([disabled]):not([inert])',
-    'iframe:not([tabindex^="-"]):not([inert])',
+    'iframe',
+    // 'iframe:not([tabindex^="-"]):not([inert])',
     'audio:not([tabindex^="-"]):not([inert])',
     'video:not([tabindex^="-"]):not([inert])',
     '[contenteditable]:not([tabindex^="-"]):not([inert])',
@@ -28,21 +29,19 @@
    * @param {(NodeList | Element | string)} targets
    */
   function A11yDialog(node, targets) {
-    // Prebind the functions that will be bound in addEventListener and
-    // removeEventListener to avoid losing references
     this._show = this.show.bind(this);
     this._hide = this.hide.bind(this);
+    // Prebind the functions that will be bound in addEventListener and
+    // removeEventListener to avoid losing references
     this._maintainFocus = this._maintainFocus.bind(this);
     this._bindKeypress = this._bindKeypress.bind(this);
 
     // Keep a reference of the node and the actual dialog on the instance
     this.container = node;
-    this.dialog = node.querySelector('dialog, [role="dialog"], [role="alertdialog"]');
-    this.role = this.dialog.getAttribute('role') || 'dialog';
-    this.useDialog = (
-      'show' in document.createElement('dialog') &&
-      this.dialog.nodeName === 'DIALOG'
-    );
+    
+
+    //inject HTML to iframe
+    this.iframe = document.getElementById("iframe");
 
     // Keep an object of listener types mapped to callback functions
     this._listeners = {};
@@ -63,23 +62,10 @@
       this._targets || collect(targets) || getSiblings(this.container);
 
     // Set the `shown` property to match the status from the DOM
-    this.shown = this.dialog.hasAttribute('open');
+    this.shown = this.iframe.hasAttribute('open');
 
-    // Despite using a `<dialog>` element, `role="dialog"` is not necessarily
-    // implied by all screen-readers (yet)
-    // See: https://github.com/edenspiekermann/a11y-dialog/commit/6ba711a777aed0dbda0719a18a02f742098c64d9#commitcomment-28694166
-    this.dialog.setAttribute('role', this.role);
-
-    if (!this.useDialog) {
-      if (this.shown) {
-        this.container.removeAttribute('aria-hidden');
-      } else {
-        this.container.setAttribute('aria-hidden', true);
-      }
-    } else {
-      this.container.setAttribute('data-a11y-dialog-native', '');
-    }
-
+    this.iframe.style.visibility = 'collapse';
+    console.log("this.iframe:", this.iframe);
     // Keep a collection of dialog openers, each of which will be bound a click
     // event listener to open the dialog
     this._openers = $$('[data-a11y-dialog-show="' + this.container.id + '"]');
@@ -93,15 +79,14 @@
     // event listener to close the dialog
     this._closers = $$('[data-a11y-dialog-hide]', this.container).concat(
       $$('[data-a11y-dialog-hide="' + this.container.id + '"]')
+    ).concat(
+      $$('[data-a11y-dialog-hide]', this.iframe.contentWindow.document.body)
     );
     this._closers.forEach(
       function(closer) {
         closer.addEventListener('click', this._hide);
       }.bind(this)
     );
-
-    // Execute all callbacks registered for the `create` event
-    this._fire('create');
 
     return this;
   };
@@ -125,31 +110,25 @@
     // Keep a reference to the currently focused element to be able to restore
     // it later
     focusedBeforeDialog = document.activeElement;
+    this.container.setAttribute('open', '');
+    this.iframe.style.visibility = 'visible';
+    this.container.removeAttribute('aria-hidden');
 
-    if (this.useDialog) {
-      this.dialog.showModal(event instanceof Event ? void 0 : event);
-    } else {
-      this.dialog.setAttribute('open', '');
-      this.container.removeAttribute('aria-hidden');
+    // Iterate over the targets to disable them by setting their `aria-hidden`
+    // attribute to `true`
+    this._targets.forEach(function(target) {
+      target.setAttribute('aria-hidden', 'true');
+    });
 
-      // Iterate over the targets to disable them by setting their `aria-hidden`
-      // attribute to `true`
-      this._targets.forEach(function(target) {
-        target.setAttribute('aria-hidden', 'true');
-      });
-    }
-
-    // Set the focus to the first focusable child of the dialog element
-    setFocusToFirstItem(this.dialog);
+    //Set focus on container
+    // console.log("IFRAME BODY: ", this.iframe.contentWindow.document.body);
+    this.iframe.focus();
 
     // Bind a focus event listener to the body element to make sure the focus
     // stays trapped inside the dialog while open, and start listening for some
     // specific key presses (TAB and ESC)
     document.body.addEventListener('focus', this._maintainFocus, true);
     document.addEventListener('keydown', this._bindKeypress);
-
-    // Execute all callbacks registered for the `show` event
-    this._fire('show', event);
 
     return this;
   };
@@ -170,18 +149,16 @@
 
     this.shown = false;
 
-    if (this.useDialog) {
-      this.dialog.close(event instanceof Event ? void 0 : event);
-    } else {
-      this.dialog.removeAttribute('open');
-      this.container.setAttribute('aria-hidden', 'true');
 
-      // Iterate over the targets to enable them by remove their `aria-hidden`
-      // attribute
-      this._targets.forEach(function(target) {
-        target.removeAttribute('aria-hidden');
-      });
-    }
+    this.container.removeAttribute('open');
+    this.iframe.style.visibility = 'collapse';
+    this.container.setAttribute('aria-hidden', 'true');
+
+    // Iterate over the targets to enable them by remove their `aria-hidden`
+    // attribute
+    this._targets.forEach(function(target) {
+      target.removeAttribute('aria-hidden');
+    });
 
     // If their was a focused element before the dialog was opened, restore the
     // focus back to it
@@ -194,93 +171,7 @@
     document.body.removeEventListener('focus', this._maintainFocus, true);
     document.removeEventListener('keydown', this._bindKeypress);
 
-    // Execute all callbacks registered for the `hide` event
-    this._fire('hide', event);
-
     return this;
-  };
-
-  /**
-   * Destroy the current instance (after making sure the dialog has been hidden)
-   * and remove all associated listeners from dialog openers and closers
-   *
-   * @return {this}
-   */
-  A11yDialog.prototype.destroy = function() {
-    // Hide the dialog to avoid destroying an open instance
-    this.hide();
-
-    // Remove the click event listener from all dialog openers
-    this._openers.forEach(
-      function(opener) {
-        opener.removeEventListener('click', this._show);
-      }.bind(this)
-    );
-
-    // Remove the click event listener from all dialog closers
-    this._closers.forEach(
-      function(closer) {
-        closer.removeEventListener('click', this._hide);
-      }.bind(this)
-    );
-
-    // Execute all callbacks registered for the `destroy` event
-    this._fire('destroy');
-
-    // Keep an object of listener types mapped to callback functions
-    this._listeners = {};
-
-    return this;
-  };
-
-  /**
-   * Register a new callback for the given event type
-   *
-   * @param {string} type
-   * @param {Function} handler
-   */
-  A11yDialog.prototype.on = function(type, handler) {
-    if (typeof this._listeners[type] === 'undefined') {
-      this._listeners[type] = [];
-    }
-
-    this._listeners[type].push(handler);
-
-    return this;
-  };
-
-  /**
-   * Unregister an existing callback for the given event type
-   *
-   * @param {string} type
-   * @param {Function} handler
-   */
-  A11yDialog.prototype.off = function(type, handler) {
-    var index = this._listeners[type].indexOf(handler);
-
-    if (index > -1) {
-      this._listeners[type].splice(index, 1);
-    }
-
-    return this;
-  };
-
-  /**
-   * Iterate over all registered handlers for given type and call them all with
-   * the dialog element as first argument, event as second argument (if any).
-   *
-   * @access private
-   * @param {string} type
-   * @param {Event} event
-   */
-  A11yDialog.prototype._fire = function(type, event) {
-    var listeners = this._listeners[type] || [];
-
-    listeners.forEach(
-      function(listener) {
-        listener(this.container, event);
-      }.bind(this)
-    );
   };
 
   /**
@@ -294,7 +185,7 @@
     // If the dialog is shown and the ESCAPE key is being pressed, prevent any
     // further effects from the ESCAPE key and hide the dialog, unless its role
     // is 'alertdialog', which should be modal
-    if (this.shown && event.which === ESCAPE_KEY && this.role !== 'alertdialog') {
+    if (this.shown && event.which === ESCAPE_KEY) {
       event.preventDefault();
       this.hide();
     }
@@ -302,7 +193,7 @@
     // If the dialog is shown and the TAB key is being pressed, make sure the
     // focus stays trapped within the dialog element
     if (this.shown && event.which === TAB_KEY) {
-      trapTabKey(this.dialog, event);
+      trapTabKey(this.iframe, event);
     }
   };
 
@@ -317,7 +208,7 @@
     // If the dialog is shown and the focus is not within the dialog element,
     // move it back to its first focusable child
     if (this.shown && !this.container.contains(event.target)) {
-      setFocusToFirstItem(this.dialog);
+      setFocusToFirstItem(this.iframe);
     }
   };
 
@@ -386,6 +277,7 @@
    * @return {Array<Element>}
    */
   function getFocusableChildren(node) {
+    console.log("NODE: ", node);
     return $$(FOCUSABLE_ELEMENTS.join(','), node).filter(function(child) {
       return !!(
         child.offsetWidth ||
