@@ -29,7 +29,7 @@
 
     <div class="dialog" id="my-accessible-dialog" tabindex="-1" aria-label="Hi again Katrina">
       <!-- <div class="dialog-overlay" tabindex="-1" data-a11y-dialog-hide></div> -->
-      <iframe id="iframe" src="http://katrinamvelez.mtv.corp.google.com:8000/example/iframe.html" class="dialog-content" aria-labelledby="dialogTitle" aria-describedby="dialogDescription">
+      <iframe id="iframe" src="http://kmv.google.com:8000/example/iframe.html" class="dialog-content" aria-labelledby="dialogTitle" aria-describedby="dialogDescription">
         
       </iframe>
     </div>
@@ -37,7 +37,7 @@
     <script src="main.js"></script>
     <script>
     (function () {
-      document.addEventListener('DOMContentLoaded', function () {
+      window.addEventListener('DOMContentLoaded', function () {
         var dialogEl = document.getElementById('my-accessible-dialog');
         var mainEl = document.getElementById('main');
         var dialog = new window.A11yDialog(dialogEl, mainEl);
